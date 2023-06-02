@@ -1,0 +1,23 @@
+CREATE TABLE pharmacy (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, cost INTEGER, price INTEGER);
+INSERT INTO pharmacy VALUES 
+(1, "amoxicillin", 120, 0.47, 1.10),
+(2, "cefpodoxime", 100, 1.00, 2.30),
+(3, "metro", 956, 0.056, .75),
+(4, "apoquel", 56, 1.20, 2.50),
+(5, "clindamycin", 30, 0.02, 0.75),
+(6, "cephalexin", 550, 0.75, 1.75),
+(7, "doxycycline", 850, 0.20, 0.90),
+(8, "fluconazole", 20, 1.20, 3.00),
+(9, "thryo-tabs", 1000, 0.06, 0.25),
+(10, "mirtazipine", 15, 0.10, 0.75),
+(11, "fortiflora", 60, 1.00, 1.75),
+(12, "fluoxetine", 387, 0.067, 0.20),
+(13, "furosemide", 465, 0.87, 1.60),
+(14, "gabapentin", 578, 0.07, 0.40),
+(15, "carprofen", 245, 0.56, 1.50);
+
+--display the database ordered by price.
+SELECT * FROM pharmacy ORDER BY price;
+
+--how many items are in stock?
+SELECT SUM(quantity) FROM pharmacy; 
