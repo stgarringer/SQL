@@ -1,0 +1,44 @@
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);
+
+INSERT INTO famous_people VALUES
+(1, "Sandra Bullock"),
+(2, "Jennifer Lawrence"),
+(3, "Dwayne Johnson"),
+(4, "Ryan Reynolds");
+
+CREATE TABLE as_seen_in (id INTEGER PRIMARY KEY, person_id INTEGER, movie TEXT);
+
+INSERT INTO as_seen_in (person_id, movie) VALUES 
+(1, "The Lost City"),
+(1, "The Proposal"),
+(1, "The Heat"),
+(2, "Don't Look Up"),
+(2, "Passengers"),
+(2, "Silver Linings Playbook"),
+(3, "Red Notice"),
+(3, "Jumanji"),
+(3, "Free Guy"),
+(4, "The Proposal"),
+(4, "Red Notice"),
+(4, "Free Guy");
+
+CREATE TABLE acting_together (id INTEGER PRIMARY KEY,
+    person1_id INTEGER,
+    person2_id INTEGER);
+
+INSERT INTO acting_together (person1_id, person2_id) VALUES
+(1, 4),
+(3, 4);
+
+--what movies are these famous people in?
+SELECT p.name, m.movie FROM famous_people p
+    LEFT OUTER JOIN as_seen_in m
+    ON p.id = m.person_id
+ORDER BY m.movie;
+
+--which famous people act together?
+SELECT p.name, b.name FROM acting_together a
+    JOIN famous_people p
+    ON a.person1_id = p.id 
+    JOIN famous_people b
+    ON a.person2_id = b.id;
